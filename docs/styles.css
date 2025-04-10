@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    width: 100%;
+    font-family: 'Playfair Display', serif;
+
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('background.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 50px;
+    color: #f5c6c6;
+}
+
+.left,
+.right {
+    width: 20%;
+    max-width: 200px;
+    font-size: 0.8rem;
+
+}
+
+.right {
+    float: right;
+}
+
+.left h3,
+.right h3 {
+    text-transform:uppercase;
+    color: white;
+    text-align: justify;
+    margin-bottom: 5px;
+}
+
+.left p,
+.right p {
+    margin-bottom: 1rem;
+    color: gray;
+    text-align: justify;
+
+}
+
+.instagram {
+    display: inline-block;
+    margin-top: 10px;
+    color: #F2532B;
+    text-decoration: underline;
+}
+
+.start-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #871B4D;
+    color: #EB913B;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    text-transform:uppercase;
+}
+
+.strong-tag {
+    display: inline-block;
+    word-break: break-word; 
+}
+
+
+.logo {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 160px;
+    height: auto;
+}
