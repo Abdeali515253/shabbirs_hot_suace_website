@@ -12,7 +12,7 @@
 <body>
     <div class="hero">
         <div class="left">
-            <h3>Stuff Hot Sauce</h3>
+            <h3>Other Stuff Hot Sauce</h3>
             <p>
                 Other Stuff Hot Sauce is like no other, my sauces are made from the finest blend of local chilies.
                 Lacto fermented to leave you with a spicy, tangy, fruity, mouth-watering flavor that will leave you
@@ -28,7 +28,7 @@
         <div class="right">
             <h3>Other Stuff Challenge</h3>
             <p>
-                Play the other stuff game. If you score above 100, take a picture, post it on your story, and tag me
+                Play the other stuff game. If you score above 500, take a picture, post it on your story, and tag me
                 <strong class="strong-tag">@shabbir_cooks_and_other_stuff.</strong>
             </p>
             <p>Every score above 100 will be sent a free bottle of hot sauce!</p>
@@ -44,16 +44,28 @@
 </body>
 
 <script>
+
+    const toggleBtn = document.getElementById('toggleBtn');
+
     const iframe = document.getElementById('unityIframe');
     iframe.style.display = "none"
 
     let myUnityInstance = null;
-    iframe.addEventListener('load', function () {
 
+    toggleBtn.addEventListener("click", () => {
+        if (myUnityInstance) {
+            iframe.style.display = "block"
+            myUnityInstance.SetFullscreen(1);
+        }
+    })
+
+    iframe.addEventListener('load', function () {
+        toggleBtn.innerText = "LOADING..."
         const checkUnityInstance = setInterval(() => {
             const unityInstance = iframe.contentWindow.unityInstance;
 
             if (unityInstance) {
+                toggleBtn.innerText = "START"
                 myUnityInstance = unityInstance
                 clearInterval(checkUnityInstance);
             }
@@ -70,15 +82,6 @@
     document.addEventListener('webkitfullscreenchange', handleFullScreenChange);
     document.addEventListener('mozfullscreenchange', handleFullScreenChange);
     document.addEventListener('MSFullscreenChange', handleFullScreenChange);
-
-
-    const toggleBtn = document.getElementById('toggleBtn');
-    toggleBtn.addEventListener("click", () => {
-        if (myUnityInstance) {
-            iframe.style.display = "block"
-            myUnityInstance.SetFullscreen(1);
-        }
-    })
 
 </script>
 
