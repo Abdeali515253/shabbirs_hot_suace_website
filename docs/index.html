@@ -33,7 +33,7 @@
             </p>
             <p>Every score above 100 will be sent a free bottle of hot sauce!</p>
             <!-- <a class="start-btn" href="#unityIframe">Start</a> -->
-            <button class="start-btn" id="toggleBtn">START</button>
+            <button class="start-btn" id="toggleBtn">LOADING...</button>
         </div>
 
         <img src="logo.png" alt="Logo" class="logo" />
@@ -60,7 +60,6 @@
     })
 
     iframe.addEventListener('load', function () {
-        toggleBtn.innerText = "LOADING..."
         const checkUnityInstance = setInterval(() => {
             const unityInstance = iframe.contentWindow.unityInstance;
 
