@@ -32,13 +32,54 @@
                 <strong class="strong-tag">@shabbir_cooks_and_other_stuff.</strong>
             </p>
             <p>Every score above 100 will be sent a free bottle of hot sauce!</p>
-            <button class="start-btn">Start</button>
+            <!-- <a class="start-btn" href="#unityIframe">Start</a> -->
+            <button class="start-btn" id="toggleBtn">START</button>
         </div>
 
         <img src="logo.png" alt="Logo" class="logo" />
     </div>
-            <iframe src="WebGL Builds/index.html" width="960" height="600" frameborder="0"></iframe>
+    <iframe allow="fullscreen" class="unity-game" src="Builds/index.html" width="960" height="600" frameborder="0"
+        id="unityIframe"></iframe>
 
 </body>
+
+<script>
+    const iframe = document.getElementById('unityIframe');
+    iframe.style.display = "none"
+
+    let myUnityInstance = null;
+    iframe.addEventListener('load', function () {
+
+        const checkUnityInstance = setInterval(() => {
+            const unityInstance = iframe.contentWindow.unityInstance;
+
+            if (unityInstance) {
+                myUnityInstance = unityInstance
+                clearInterval(checkUnityInstance);
+            }
+        }, 1000);
+    });
+
+    function handleFullScreenChange() {
+        if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement && !document.msFullscreenElement) {
+            iframe.style.display = "none"
+        }
+    }
+
+    document.addEventListener('fullscreenchange', handleFullScreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullScreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullScreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullScreenChange);
+
+
+    const toggleBtn = document.getElementById('toggleBtn');
+    toggleBtn.addEventListener("click", () => {
+        if (myUnityInstance) {
+            iframe.style.display = "block"
+            myUnityInstance.SetFullscreen(1);
+        }
+    })
+
+</script>
 
 </html>
