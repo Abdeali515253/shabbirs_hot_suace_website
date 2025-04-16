@@ -58,6 +58,7 @@ html {
     margin-top: 10px;
     color: #F2532B;
     text-decoration: underline;
+    word-break: break-word; 
 }
 
 .start-btn {
@@ -94,4 +95,10 @@ html {
 .unity-game {
     height: 100vh;
     width: 100%;
+}
+
+@media (max-width: 768px) {
+    .hero {
+      display: none;
+    }
 }

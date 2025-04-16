@@ -7,6 +7,7 @@
     <title>Other Stuff Hot Sauce</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="phoneStyles.css" />
 </head>
 
 <body>
@@ -32,12 +33,28 @@
                 <strong class="strong-tag">@shabbir_cooks_and_other_stuff.</strong>
             </p>
             <p>Every score above 100 will be sent a free bottle of hot sauce!</p>
-            <!-- <a class="start-btn" href="#unityIframe">Start</a> -->
             <button class="start-btn" id="toggleBtn">LOADING...</button>
         </div>
 
         <img src="logo.png" alt="Logo" class="logo" />
     </div>
+
+    <div class="phone-hero">
+        <div class="center">
+            <h3>Other Stuff Hot Sauce</h3>
+            <p>
+                Play the other stuff game. If you score above 100, take a picture, post it on your story, and tag me to
+                get a free hot sauce
+                <strong class="strong-tag">@shabbir_cooks_and_other_stuff.</strong>
+            </p>
+            <a href="https://instagram.com/shabbir_cooks_and_other_stuff" class="instagram" target="_blank">
+                shabbir_cooks_and_other_stuff
+            </a>
+            <button class="start-btn-phone" id="toggleBtnPhone">LOADING...</button>
+        </div>
+        <img src="logo.png" alt="Logo" class="phone-logo" />
+    </div>
+
     <iframe allow="fullscreen" class="unity-game" src="Builds/index.html" width="960" height="600" frameborder="0"
         id="unityIframe"></iframe>
 
@@ -46,6 +63,7 @@
 <script>
 
     const toggleBtn = document.getElementById('toggleBtn');
+    const toggleBtnPhone = document.getElementById('toggleBtnPhone');
 
     const iframe = document.getElementById('unityIframe');
     iframe.style.display = "none"
@@ -59,12 +77,28 @@
         }
     })
 
+    function isPortrait() {
+        return window.innerHeight > window.innerWidth;
+    }
+
+    toggleBtnPhone.addEventListener("click", () => {
+        if (myUnityInstance) {
+            if (isPortrait()) {
+                alert("please switch to landscape mode to play game")
+                return
+            }
+            iframe.style.display = "block"
+            myUnityInstance.SetFullscreen(1);
+        }
+    })
+
     iframe.addEventListener('load', function () {
         const checkUnityInstance = setInterval(() => {
             const unityInstance = iframe.contentWindow.unityInstance;
 
             if (unityInstance) {
                 toggleBtn.innerText = "START"
+                toggleBtnPhone.innerText = "START"
                 myUnityInstance = unityInstance
                 clearInterval(checkUnityInstance);
             }
