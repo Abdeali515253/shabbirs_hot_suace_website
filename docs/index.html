@@ -44,11 +44,13 @@
             <div class="phone-text-content">
                 <h3>Other Stuff Hot Sauce</h3>
                 <p>
-                    Play the other stuff game. If you score above 100, take a picture, post it on your story, and tag me <strong class="strong-tag"><a href="https://instagram.com/shabbir_cooks_and_other_stuff" class="phone-instagram" target="_blank">
-                        @shabbir_cooks_and_other_stuff
-                    </a></strong> to
+                    Play the other stuff game. If you score above 100, take a picture, post it on your story, and tag me
+                    <strong class="strong-tag"><a href="https://instagram.com/shabbir_cooks_and_other_stuff"
+                            class="phone-instagram" target="_blank">
+                            @shabbir_cooks_and_other_stuff
+                        </a></strong> to
                     get a free hot sauce
-                    
+
                 </p>
             </div>
             <button class="start-btn-phone" id="toggleBtnPhone">LOADING...</button>
@@ -111,6 +113,17 @@
             iframe.style.display = "none"
         }
     }
+
+    window.addEventListener("gamepadconnected", (e) => {
+        const gp = navigator.getGamepads()[e.gamepad.index];
+        console.log(
+            "Gamepad connected at index %d: %s. %d buttons, %d axes.",
+            gp.index,
+            gp.id,
+            gp.buttons.length,
+            gp.axes.length,
+        );
+    });
 
     document.addEventListener('fullscreenchange', handleFullScreenChange);
     document.addEventListener('webkitfullscreenchange', handleFullScreenChange);
